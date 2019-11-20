@@ -1,0 +1,109 @@
+body {
+    margin: 0px auto;
+    background-color: #b7e0dd;
+}
+
+
+
+.link {
+    display: block;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.3s;
+    font-family: 'Montserrat', 'Verdana', sans-serif
+}
+
+.link:hover {
+    background-color: paleturquoise;
+    color: black;
+}
+
+.center {
+    margin: 0px auto;
+    display: block;
+    text-align: center;
+}
+
+.slideshow {
+    
+}
+
+.selector {
+    margin: auto;
+    width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: block;
+    clear: both;
+}
+
+p.selector {
+    display: inline;
+}
+
+#myCanvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 1px solid black;
+}
+
+#canvas_picker {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.colorbox {
+    width: 735px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+h1 {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    padding: auto;
+    font-family: 'Roboto Slab', 'Palatino', serif;
+    font-size: 42px;
+    text-decoration: none;
+}
+
+p {
+    font-family: 'Montserrat', 'Verdana', sans-serif;
+}
+
+.full {
+    width: 100%;
+}
+
+* {
+    margin: 0;
+}
+
+canvas {
+    background: transparent;
+}
+
+img.galleryIMG {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+  
+  img.withColor {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+}
