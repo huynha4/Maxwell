@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="w3.css">
@@ -20,16 +21,17 @@
         </div>
     </header>
 
-    <h1 class="w3-center center w3-margin">The R.C. Maxwell Company</h1>
+    <h1 class="w3-center center w3-padding-16">The R.C. Maxwell Company</h1>
+
+
+    <div class="w3-content w3-display-container w3-margin">
+        <img class="slideIMG galleryIMG full" src="images/Coke_SignCOLOR.PNG" onclick="toggleColor(event);">
+        <img class="slideIMG galleryIMG full" src="images/WrigleyCOLOR.jpg" onclick="toggleColor(event);">
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    </div>
 
     <div class="w3-container">
-        <div class="w3-row">
-            <div class="w3-col l3 m2 w3-hide-small">&nbsp;</div>
-            <div class="w3-col l6 m8 s12">
-                <img class="galleryIMG w3-image full w3-margin-bottom w3-half" src="images/Coke_SignCOLOR.PNG" onclick="toggleColor(event);">
-            </div>
-            <div class="w3-col l3 m2 w3-hide-small">&nbsp;</div>
-        </div>
         <div class="w3-auto w3-justify">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pellentesque neque et pulvinar iaculis. Curabitur id nisi dignissim, sollicitudin justo sit amet, ultrices lacus. Donec dictum, magna ac maximus condimentum, felis sem porttitor leo, eu euismod massa dui eget neque. Sed porttitor, felis eu lobortis ultricies, lectus lorem interdum ex, ut porttitor leo ex at neque. Donec eget tincidunt dolor. Proin ut eleifend est, eu elementum purus. Maecenas viverra dui massa, nec viverra velit tristique sit amet.
         </div>
@@ -42,4 +44,25 @@
         </div>
     </footer>
 </body>
-<script src="Maxwell.js"></script></html>            
+    <script src="Jquery.js"></script>
+<script src="Maxwell.js"></script>
+    <script>
+    var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("slideIMG");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+    </script>
+</html>
