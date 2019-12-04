@@ -7,11 +7,13 @@
 
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
+var imgcanvas = document.getElementById('imageCanvas');
+var imgctx = imgcanvas.getContext('2d');
 
 var painting = document.getElementById('paint');
 var paint_style = getComputedStyle(painting);
-canvas.width = 542;
-canvas.height = 403;
+canvas.width = 0;
+canvas.height = 0;
 
 var mouse = {x: 0, y: 0};
  
@@ -21,16 +23,19 @@ canvas.addEventListener('mousemove', function(e) {
 }, false);
 
 var img = new Image();
-img.src = "images/Coke_Sign.png";
+img.src = "images/CokeSignNoColor.jpg";
 img.onload = function() {
-    ctx.drawImage(img, 0, 0);
-    ctx.strokeStyle = '#FF0000';
+  imgcanvas.width = img.width;
+  imgcanvas.height = img.height;
+  canvas.width = img.width;
+  canvas.height = img.height;
+  imgctx.drawImage(img, 0, 0);
+  ctx.strokeStyle = '#BA5054';
+  ctx.lineWidth = 7;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.globalCompositionOperation = "destination-out";
 }
-
-ctx.lineWidth = 3;
-ctx.lineJoin = 'round';
-ctx.lineCap = 'round';
-ctx.globalCompositionOperation = "destination-out";
  
 canvas.addEventListener('mousedown', function(e) {
     ctx.beginPath();
@@ -44,6 +49,7 @@ canvas.addEventListener('mouseup', function() {
 }, false);
  
 var onPaint = function() {
+    ctx.globalAlpha = 1;
     ctx.lineTo(mouse.x, mouse.y);
     ctx.stroke();
 };
@@ -51,6 +57,17 @@ var onPaint = function() {
 function updateColor() {
   var dropdown = document.getElementById('color-dropdown');
   ctx.strokeStyle = dropdown.options[dropdown.selectedIndex].value;
+}
+
+function updateSize() {
+  var sizedropdown = document.getElementById('size-dropdown');
+  ctx.lineWidth = sizedropdown.options[sizedropdown.selectedIndex].value;
+}
+
+function updateOpacity() {
+  var opacitydropdown = document.getElementById('opacity-dropdown');
+  var colorCanvas = document.getElementById('myCanvas');
+  colorCanvas.style.opacity = opacitydropdown.options[opacitydropdown.selectedIndex].value;
 }
 
 function toggleColor(event) {
