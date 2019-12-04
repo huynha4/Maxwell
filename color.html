@@ -22,42 +22,68 @@
 
     <h1 class="w3-center w3-padding">Coloring with R.C. Maxwell Dyes</h1>
     <div class="w3-container" id="paint">
-        <canvas id="myCanvas"></canvas>
-        <div class="selector">
-            <p>Choose your ink!</p>
-            <select name="colors" id="color-dropdown" onchange="updateColor();">
-                <optgroup label="Neutral">
-                    <option value="#000000">Black</option>
-                    <option value="#FFFFFF">White</option>
-                </optgroup>
-                <optgroup label="Reds">
-                    <option value="#FF0000">Red</option>
-                </optgroup>
-                <optgroup label="Greens">
-                    <option value="#00FF00">Green</option>
-                    <option value="#007700">Kirk's Favorite Color</option>
-                    <option value="#00cc66">Ev's Favorite Color</option>
-                </optgroup>
-                <optgroup label="Blues">
-                    <option value="#0000FF">Blue</option>
-                    <option value="#00aaaa">Anne's Favorite Color</option>
-                </optgroup>
-                <optgroup label="Others">
-                    <option value="#f00fed">Scrungle</option>
-                </optgroup>
-            </select>
-            <br>
+        <div class="container_row">
+            <canvas id="myCanvas" class="layer1"></canvas>
+            <canvas id="imageCanvas" class="layer2"></canvas>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <div class="w3-container">
-            <div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis orci risus, et congue mi ultricies sit amet. Ut auctor massa et dignissim venenatis. Suspendisse pharetra quis justo sit amet congue. Praesent ut arcu quis sem fringilla imperdiet. Nam maximus ornare nibh ut sagittis. Mauris dictum ligula eu arcu fermentum vestibulum. In condimentum dignissim ligula. Etiam diam massa, vestibulum sit amet venenatis accumsan, luctus eu tellus. Nulla quis metus ac arcu vehicula consectetur vitae a turpis. Integer ac justo vel lacus venenatis rhoncus. Integer libero ligula, mollis ut consectetur eu, dapibus quis turpis. Integer ullamcorper, ipsum a finibus placerat, purus augue dignissim dui, non consectetur est enim vel massa.
-
-                </p>
+        <div class="selector">
+                <div class="select-column">
+                        <p>Drawing Size:</p>
+                        <select name="sizes" id="size-dropdown" onchange="updateSize();">
+                            <option value="20">X-Large</option>
+                            <option value="14">Large</option>
+                            <option selected="selected" value="7">Normal</option>
+                            <option value="3.5">Small</option>
+                        </select>
+                    </div>
+                <div class="select-column">
+                <p>Choose your ink!</p>
+                <select name="colors" id="color-dropdown" onchange="updateColor();">
+                    <optgroup label="Neutral">
+                        <option value="#CDBDA4">Zinc White</option>
+                        <option value="#917D64">Coating Ochre</option>
+                    </optgroup>
+                    <optgroup label="Reds">
+                        <option value="#B05D65">Vermillion Red</option>
+                        <option selected="selected" value="#BA5054">Coca-Cola Red</option>
+                        <option value="#7D464B">Deep Maroon Red</option>
+                    </optgroup>
+                    <optgroup label="Oranges and Yellows">
+                        <option value="#CEA452">B.D. Yellow</option>
+                        <option value="#AF8E4B">Old Gold</option>
+                        <option value="#AF7859">Deep Orange</option>
+                    </optgroup>
+                    <optgroup label="Greens">
+                        <option value="#968F63">Light Pale Green</option>
+                        <option value="#A59943">Light Warm Green</option>
+                        <option value="#5B5D38">Paris Green</option>
+                        <option value="#007700">Kirk's Favorite Color</option>
+                        <option value="#00cc66">Ev's Favorite Color</option>
+                    </optgroup>
+                    <optgroup label="Blues and Purples">
+                        <option value="#667A78">Border Blue</option>
+                        <option value="#48525E">Cobalt Blue</option>
+                        <option value="#434673">Ultramarine Blue</option>
+                        <option value="#473939">Deep Purple</option>
+                        <option value="#BE9D96">Lavender</option>
+                        <option value="#00aaaa">Anne's Favorite Color</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="select-column">
+                <p>Transparency:</p>
+                <select name="opacity" id="opacity-dropdown" onchange="updateOpacity();">
+                    <option value="0.9">90%</option>
+                    <option value="0.75">75%</option>
+                    <option selected="selected" value="0.50">50%</option>
+                    <option value="0.25">25%</option>
+                    <option value="0.0">0%</option>
+                </select>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </div>
+    <div class="footerspacing"></div>
     <footer class="w3-flat-peter-river w3-padding-16 w3-margin-top">
         <div class="w3-container">
             Test information
