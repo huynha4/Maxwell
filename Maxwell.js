@@ -74,3 +74,4 @@ function toggleColor(event) {
   var image = event.target;
   image.classList.toggle("withColor");
 }
+
