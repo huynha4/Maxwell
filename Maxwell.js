@@ -15,16 +15,12 @@ var paint_style = getComputedStyle(painting);
 canvas.width = 0;
 canvas.height = 0;
 
-var mouse = {x: 0, y: 0};
+var clientX;
+var clientY;
  
 canvas.addEventListener('mousemove', function(e) {
-  mouse.x = e.pageX - this.offsetLeft;
-  mouse.y = e.pageY - this.offsetTop;
-}, false);
-
-canvas.addEventListener('touchmove', function(e) {
-  mouse.x = touch.clientX;
-  mouse.y = touch.clientY;
+  clientX = e.pageX - this.offsetLeft;
+  clientY = e.pageY - this.offsetTop;
 }, false);
 
 var img = new Image();
@@ -44,33 +40,74 @@ img.onload = function() {
  
 canvas.addEventListener('mousedown', function(e) {
     ctx.beginPath();
-    ctx.moveTo(mouse.x, mouse.y);
+    ctx.moveTo(clientX, clientY);
  
     canvas.addEventListener('mousemove', onPaint, false);
-}, false);
-
-canvas.addEventListener('touchstart', function(e) {
-  ctx.beginPath();
-  ctx.moveTo(mouse.x, mouse.y);
-
-  canvas.addEventListener('touchmove', onPaint, false);
 }, false);
  
 canvas.addEventListener('mouseup', function() {
     canvas.removeEventListener('mousemove', onPaint, false);
 }, false);
-
-canvas.addEventListener('touchend', function() {
-  canvas.removeEventListener('touchmove', onPaint, false);
-}, false);
  
 var onPaint = function(e) {
-  e.preventDefault();  
   ctx.globalAlpha = 1;
-    ctx.lineTo(mouse.x, mouse.y);
+    ctx.lineTo(clientX, clientY);
     ctx.stroke();
 };
 
+// Set up touch events for mobile, etc
+canvas.addEventListener("touchstart", function (e) {
+  mousePos = getTouchPos(canvas, e);
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousedown", {
+    clientX: touch.clientX,
+    clientY: touch.clientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+
+canvas.addEventListener("touchend", function (e) {
+  var mouseEvent = new MouseEvent("mouseup", {});
+  canvas.dispatchEvent(mouseEvent);
+}, false);
+
+canvas.addEventListener("touchmove", function (e) {
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousemove", {
+  clientX: touch.clientX,
+  clientY: touch.clientY
+});
+
+canvas.dispatchEvent(mouseEvent);
+}, false);
+
+// Get the position of a touch relative to the canvas
+function getTouchPos(canvasDom, touchEvent) {
+  var rect = canvasDom.getBoundingClientRect();
+  return {
+    x: touchEvent.touches[0].clientX - rect.left,
+    y: touchEvent.touches[0].clientY - rect.top
+  };
+}
+
+// Prevent scrolling when touching the canvas
+document.body.addEventListener("touchstart", function (e) {
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, false);
+document.body.addEventListener("touchend", function (e) {
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, false);
+document.body.addEventListener("touchmove", function (e) {
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, false);
+
+// Image color/sections functions
 function updateColor() {
   var dropdown = document.getElementById('color-dropdown');
   ctx.strokeStyle = dropdown.options[dropdown.selectedIndex].value;
