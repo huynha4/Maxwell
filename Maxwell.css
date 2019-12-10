@@ -50,6 +50,12 @@ p.selector {
     text-align: center;
 }
 
+.footer-column {
+    width: 33.33%;
+    margin: auto;
+    text-align: center;
+}
+
 #myCanvas {
     padding-left: 0;
     padding-right: 0;
@@ -80,7 +86,7 @@ p.selector {
 }
 
 .footerspacing {
-    margin-bottom: 100px;
+    margin-bottom: 0px;
 }
 
 .colorbox {
@@ -147,12 +153,14 @@ select
       width: 100%;
     }
 }
+
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+}
 
 .slideIMG {
-  display: none;
-}
+    display: none;
+  }
