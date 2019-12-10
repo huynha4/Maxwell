@@ -23,7 +23,6 @@ canvas.addEventListener('mousemove', function(e) {
 }, false);
 
 canvas.addEventListener('touchmove', function(e) {
-  e.preventDefault();
   mouse.x = e.pageX - this.offsetLeft;
   mouse.y = e.pageY - this.offsetTop;
 }, false);
@@ -51,6 +50,7 @@ canvas.addEventListener('mousedown', function(e) {
 }, false);
 
 canvas.addEventListener('touchstart', function(e) {
+  e.preventDefault();
   ctx.beginPath();
   ctx.moveTo(mouse.x, mouse.y);
 
