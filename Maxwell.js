@@ -22,6 +22,11 @@ canvas.addEventListener('mousemove', function(e) {
   mouse.y = e.pageY - this.offsetTop;
 }, false);
 
+canvas.addEventListener('touchmove', function(e) {
+  mouse.x = e.pageX - this.offsetLeft;
+  mouse.y = e.pageY - this.offsetTop;
+}, false);
+
 var img = new Image();
 img.src = "images/CokeSignNoColor.jpg";
 img.onload = function() {
@@ -43,9 +48,20 @@ canvas.addEventListener('mousedown', function(e) {
  
     canvas.addEventListener('mousemove', onPaint, false);
 }, false);
+
+canvas.addEventListener('touchstart', function(e) {
+  ctx.beginPath();
+  ctx.moveTo(mouse.x, mouse.y);
+
+  canvas.addEventListener('touchmove', onPaint, false);
+}, false);
  
 canvas.addEventListener('mouseup', function() {
     canvas.removeEventListener('mousemove', onPaint, false);
+}, false);
+
+canvas.addEventListener('touchend', function() {
+  canvas.removeEventListener('touchmove', onPaint, false);
 }, false);
  
 var onPaint = function() {
