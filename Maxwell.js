@@ -23,8 +23,8 @@ canvas.addEventListener('mousemove', function(e) {
 }, false);
 
 canvas.addEventListener('touchmove', function(e) {
-  mouse.x = e.pageX - this.offsetLeft;
-  mouse.y = e.pageY - this.offsetTop;
+  mouse.x = touch.clientX;
+  mouse.y = touch.clientY;
 }, false);
 
 var img = new Image();
@@ -50,7 +50,6 @@ canvas.addEventListener('mousedown', function(e) {
 }, false);
 
 canvas.addEventListener('touchstart', function(e) {
-  e.preventDefault();
   ctx.beginPath();
   ctx.moveTo(mouse.x, mouse.y);
 
@@ -65,8 +64,9 @@ canvas.addEventListener('touchend', function() {
   canvas.removeEventListener('touchmove', onPaint, false);
 }, false);
  
-var onPaint = function() {
-    ctx.globalAlpha = 1;
+var onPaint = function(e) {
+  e.preventDefault();  
+  ctx.globalAlpha = 1;
     ctx.lineTo(mouse.x, mouse.y);
     ctx.stroke();
 };
