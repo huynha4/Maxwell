@@ -166,3 +166,7 @@ select
 .slideIMG {
     display: none;
   }
+
+body, html {
+    position: fixed;
+}
