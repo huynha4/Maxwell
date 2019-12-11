@@ -64,6 +64,7 @@ p.selector {
     display: block;
     border: 1px solid black;
     opacity:0.5;
+    touch-action: none;
 }
 
 #imageCanvas {
@@ -75,6 +76,7 @@ p.selector {
     border: 1px solid black;
     /*-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     /*filter: grayscale(100%);*/
+    touch-action: none;
 }
 
 #canvas_picker {
