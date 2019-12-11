@@ -49,6 +49,7 @@ canvas.addEventListener('mouseup', function() {
 }, false);
  
 var onPaint = function(e) {
+  e.preventDefault();
   ctx.globalAlpha = 1;
     ctx.lineTo(clientX, clientY);
     ctx.stroke();
