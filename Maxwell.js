@@ -97,13 +97,18 @@ function getTouchPos(canvasDom, touchEvent) {
 // Prevent scrolling when touching the canvas
 document.body.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
-    e.preventDefault();
-    alert("test");
+    $('html, body').css({
+      overflow: 'hidden',
+      height: '100%'
+  });
   }
 }, false);
 document.body.addEventListener("touchend", function (e) {
   if (e.target == canvas) {
-    e.preventDefault();
+    $('html, body').css({
+      overflow: 'auto',
+      height: 'auto'
+  });
   }
 }, false);
 document.body.addEventListener("touchmove", function (e) {
