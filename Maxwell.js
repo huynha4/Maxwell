@@ -51,8 +51,6 @@ canvas.addEventListener('mouseup', function() {
 var onPaint = function(e) {
   ctx.globalAlpha = 1;
     ctx.lineTo(clientX, clientY);
-    console.log(clientX);
-    console.log(clientY);
     ctx.stroke();
 };
 
@@ -75,7 +73,10 @@ canvas.addEventListener("touchend", function (e) {
 }, false);
 
 canvas.addEventListener("touchmove", function (e) {
+  mousePos = getTouchPos(canvas,e);
   var touch = e.touches[0];
+  clientX = mousePos.x;
+  clientY = mousePos.y;
   var mouseEvent = new MouseEvent("mousemove", {
   clientX: touch.clientX,
   clientY: touch.clientY
