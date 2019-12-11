@@ -98,6 +98,7 @@ function getTouchPos(canvasDom, touchEvent) {
 document.body.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
     e.preventDefault();
+    alert("test");
   }
 }, false);
 document.body.addEventListener("touchend", function (e) {
