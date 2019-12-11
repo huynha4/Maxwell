@@ -98,21 +98,21 @@ function getTouchPos(canvasDom, touchEvent) {
 document.body.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
     $('html, body').css({
-      overflow: 'hidden',
-      width: screen.width,
-      height: screen.height,
-      position: 'fixed'
-  });
+      overflow: 'hidden'
+    });
+    $('body').css({
+      position: 'relative'
+    });
   }
 }, false);
 document.body.addEventListener("touchend", function (e) {
   if (e.target == canvas) {
     $('html, body').css({
-      overflow: 'auto',
-      width: 'auto',
-      height: 'auto',
+      overflow: 'auto'
+    });
+    $('body').css({
       position: 'static'
-  });
+    });
   }
 }, false);
 document.body.addEventListener("touchmove", function (e) {
