@@ -99,8 +99,8 @@ document.body.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
     $('html, body').css({
       overflow: 'hidden',
-      width: '100%',
-      height: '100%',
+      width: screen.width,
+      height: screen.height,
       position: 'fixed'
   });
   }
