@@ -99,7 +99,8 @@ document.body.addEventListener("touchstart", function (e) {
   if (e.target == canvas) {
     $('html, body').css({
       overflow: 'hidden',
-      height: '100%'
+      height: '100%',
+      position: 'fixed'
   });
   }
 }, false);
@@ -107,7 +108,8 @@ document.body.addEventListener("touchend", function (e) {
   if (e.target == canvas) {
     $('html, body').css({
       overflow: 'auto',
-      height: 'auto'
+      height: 'auto',
+      position: 'static'
   });
   }
 }, false);
