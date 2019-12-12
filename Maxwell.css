@@ -166,3 +166,9 @@ select
 .slideIMG {
     display: none;
   }
+
+.verticalcenter {
+    margin: 0 auto;
+    vertical-align: middle;
+    
+}
